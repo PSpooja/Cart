@@ -10,24 +10,47 @@ class CartItem extends Component {
           img: ''
        }
 
+       this.testing();
     //    this.increaseQuantity = this.increaseQuantity.bind(this);
+   }
+
+   testing(){
+       const promise = new Promise((resolve, reject) => {
+           setTimeout(() => {
+               resolve('done')
+           }, 5000);
+       })
+
+       promise.then(() => {
+           this.setState({ qty : this.state.qty + 10 })
+
+           this.setState({ qty : this.state.qty + 10 })
+
+           this.setState({ qty : this.state.qty + 10 })
+
+           console.log("promise - this.state", this.state)
+       })
    }
 
    increaseQuantity = () =>{
     //    this.state.qty += 1;
-       console.log("this.state", this.state);
+    //    console.log("this.state", this.state);
       
        //form-1 of setState
     //    this.setState({
-    //        qty: this.state.qty +1
+    //        qty: this.state.qty + 1
     //    })
 
        //form-2 of setState - 
-       this.setState((prevState) => {
-           return {
-               qty : prevState.qty +1
-           }
-       })
+
+      this.setState((prevState) => {
+        return {
+            qty : prevState.qty +1
+        }
+    }, () => {
+        console.log("this.state- callback", this.state)
+    })
+
    }
 
    decreaseQuantity = () => {
@@ -44,7 +67,7 @@ class CartItem extends Component {
 
     render() {
        const { title, price, qty} = this.state;
-
+       console.log("render");
         return (
             <div className="cart-item">
                 <div className="left-block">
