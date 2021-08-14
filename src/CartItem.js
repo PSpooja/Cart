@@ -9,6 +9,37 @@ class CartItem extends Component {
           qty : 1,
           img: ''
        }
+
+    //    this.increaseQuantity = this.increaseQuantity.bind(this);
+   }
+
+   increaseQuantity = () =>{
+    //    this.state.qty += 1;
+       console.log("this.state", this.state);
+      
+       //form-1 of setState
+    //    this.setState({
+    //        qty: this.state.qty +1
+    //    })
+
+       //form-2 of setState - 
+       this.setState((prevState) => {
+           return {
+               qty : prevState.qty +1
+           }
+       })
+   }
+
+   decreaseQuantity = () => {
+       const { qty } = this.state;
+       if(qty === 0){
+           return;
+       }
+       this.setState((prevState) => {
+           return{
+               qty : prevState.qty - 1
+           }
+       })
    }
 
     render() {
@@ -25,8 +56,14 @@ class CartItem extends Component {
                     <div style={{color: '#777'}}>Qty: {qty}</div>
                     <div className="action-icons">
                         {/* {Buttons} */}
-                        <img src="https://as2.ftcdn.net/v2/jpg/01/07/62/07/1000_F_107620769_UwNVSoXnKS4VNcOKoZjPohlEPn83oE38.jpg" alt="increase" className="action-icons"/>
-                        <img src="https://as1.ftcdn.net/v2/jpg/03/73/49/86/500_F_373498649_nBxauQ0ipBSVrVcMpWWVmTpXu3BLvRyY.jpg" alt="decrease" className="action-icons"/>
+                        <img src="https://as2.ftcdn.net/v2/jpg/01/07/62/07/1000_F_107620769_UwNVSoXnKS4VNcOKoZjPohlEPn83oE38.jpg"
+                         alt="increase" className="action-icons"
+                         onClick={this.increaseQuantity}
+                         />
+                        <img src="https://as1.ftcdn.net/v2/jpg/03/73/49/86/500_F_373498649_nBxauQ0ipBSVrVcMpWWVmTpXu3BLvRyY.jpg" 
+                        alt="decrease" className="action-icons"
+                        onClick ={this.decreaseQuantity}
+                        />
                         <img src="https://as2.ftcdn.net/v2/jpg/00/98/26/11/500_F_98261175_Sv69O3rZsHApYkjAdrWbgQixYHwyZyOr.jpg" alt="delete" className="action-icons"/>
                     </div>
                 </div>
