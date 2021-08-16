@@ -6,6 +6,8 @@ class CartItem extends Component {
     render() {
         const { title, price, qty} = this.props.product;
          console.log("this.props", this.props);
+
+         const {product, increaseQuantity, decreaseQuantity, deleteItems} = this.props;
    
         return (
             <div className="cart-item">
@@ -20,13 +22,16 @@ class CartItem extends Component {
                         {/* {Buttons} */}
                         <img src="https://as2.ftcdn.net/v2/jpg/01/07/62/07/1000_F_107620769_UwNVSoXnKS4VNcOKoZjPohlEPn83oE38.jpg"
                          alt="increase" className="action-icons"
-                         onClick={() => this.props.increaseQuantity(this.props.product)}
+                         onClick={() => increaseQuantity(product)}
                          />
                         <img src="https://as1.ftcdn.net/v2/jpg/03/73/49/86/500_F_373498649_nBxauQ0ipBSVrVcMpWWVmTpXu3BLvRyY.jpg" 
                         alt="decrease" className="action-icons"
-                        onClick ={() => this.props.decreaseQuantity(this.props.product)}
+                        onClick ={() => decreaseQuantity(product)}
                         />
-                        <img src="https://as2.ftcdn.net/v2/jpg/00/98/26/11/500_F_98261175_Sv69O3rZsHApYkjAdrWbgQixYHwyZyOr.jpg" alt="delete" className="action-icons"/>
+                        <img src="https://as2.ftcdn.net/v2/jpg/00/98/26/11/500_F_98261175_Sv69O3rZsHApYkjAdrWbgQixYHwyZyOr.jpg"
+                         alt="delete" className="action-icons"
+                         onClick = {() => deleteItems(product.id)}
+                         />
                     </div>
                 </div>
             </div>

@@ -61,6 +61,19 @@ class Cart extends Component{
         })
     }
 
+    handleDeleteProduct = (id) =>{
+        console.log("Hey please delete the selected product");
+        const {products} = this.state;
+
+        const items = products.filter((item) => item.id !== id)
+
+        console.log(items);
+
+        this.setState({
+            products : items
+        })
+    }
+
     render(){
         const { products } = this.state
         return(
@@ -71,6 +84,7 @@ class Cart extends Component{
                     key={product.id}
                     increaseQuantity = {this.handleIncreaseQuantity}
                     decreaseQuantity = {this.handleDecreaseQuantity}
+                    deleteItems = {this.handleDeleteProduct}
                     />
                 })}
 
