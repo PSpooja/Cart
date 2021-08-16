@@ -24,7 +24,7 @@ class CartItem extends Component {
                          />
                         <img src="https://as1.ftcdn.net/v2/jpg/03/73/49/86/500_F_373498649_nBxauQ0ipBSVrVcMpWWVmTpXu3BLvRyY.jpg" 
                         alt="decrease" className="action-icons"
-                        onClick ={this.decreaseQuantity}
+                        onClick ={() => this.props.decreaseQuantity(this.props.product)}
                         />
                         <img src="https://as2.ftcdn.net/v2/jpg/00/98/26/11/500_F_98261175_Sv69O3rZsHApYkjAdrWbgQixYHwyZyOr.jpg" alt="delete" className="action-icons"/>
                     </div>

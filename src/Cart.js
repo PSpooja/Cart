@@ -39,7 +39,25 @@ class Cart extends Component{
         products[index].qty += 1;
 
         this.setState({
-            products : products
+            // products : products
+            products  // short form 
+        })
+    }
+
+    handleDecreaseQuantity = (product) => {
+        console.log("Hey Please decrease the qty of product");
+        const {products} = this.state;
+        const index = products.indexOf(product);
+
+        if(products[index].qty === 0){
+            return;
+        }
+
+        products[index].qty -=1;
+
+        this.setState({
+            // products : products
+            products  // short form 
         })
     }
 
@@ -52,6 +70,7 @@ class Cart extends Component{
                     return <CartItem product = {product} 
                     key={product.id}
                     increaseQuantity = {this.handleIncreaseQuantity}
+                    decreaseQuantity = {this.handleDecreaseQuantity}
                     />
                 })}
 
