@@ -1,18 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class CartItem extends Component {
+const CartItem = (props) => {
 
+        const { title, price, qty} = props.product;
+         console.log("this.props", props);
 
-    render() {
-        const { title, price, qty} = this.props.product;
-         console.log("this.props", this.props);
-
-         const {product, increaseQuantity, decreaseQuantity, deleteItems} = this.props;
+         const {product, increaseQuantity, decreaseQuantity, deleteItems} = props;
    
         return (
             <div className="cart-item">
                 <div className="left-block">
-                    <img style={styles.image}/>
+                    <img style={styles.image} src={product.img}/>
                 </div>
                 <div className="right-block">
                     <div style={{fontSize:25}}>{title}</div>
@@ -36,7 +34,7 @@ class CartItem extends Component {
                 </div>
             </div>
         )
-    }
+    
 }
 
 // style through style object
